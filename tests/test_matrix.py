@@ -37,6 +37,9 @@ def test_get_matrix(page: Page):
         base.open()
     with step("Заполнить поле Дата Рождения"):
         base.click_by_placeholder("01.01.1901").fill("2000-02-02")
+    with step("Нажать на кнопку 'Узнать'"):
+        base.click_by_locator(LOCATOR_BTN_DISCOVER)
+
 
 
 
