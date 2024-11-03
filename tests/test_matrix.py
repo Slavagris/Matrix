@@ -17,16 +17,16 @@ def test_goto_telegram(page: Page):
     with step("Войти на страницу"):
         base = BasePage(page)
         base.open()
-    with step("Проверить перреходы по иконкам соцесетей"):
+    with step("Проверить переходы по иконкам соцсетей"):
         with step("Перейти на страницу Telegram"):
             base.click_by_locator(LOCATOR_ICON_TELEGRAM)
 
 
-def test_goto_instagramm(page: Page):
+def test_goto_instagram(page: Page):
     with step("Войти на страницу"):
         base = BasePage(page)
         base.open()
-    with step("Проверить перреходы по иконкам соцесетей"):
+    with step("Проверить переходы по иконкам соцсетей"):
         with step("Перейти на страницу Instagram"):
             base.click_by_locator(LOCATOR_ICON_INSTAGRAM)
 
@@ -39,6 +39,20 @@ def test_get_matrix(page: Page):
         base.click_by_placeholder("01.01.1901").fill("2000-02-02")
     with step("Нажать на кнопку 'Узнать'"):
         base.click_by_locator(LOCATOR_BTN_DISCOVER)
+
+
+def test_get_error_matrix(page: Page):
+    with step("Войти на страницу"):
+        base = BasePage(page)
+        base.open()
+    with step("Заполнить поле Дата Рождения"):
+        base.click_by_placeholder("01.01.1901").fill("")
+    with step("Нажать на кнопку 'Узнать'"):
+        base.click_by_locator(LOCATOR_BTN_DISCOVER)
+    with step("Получить сообщение с ошибкой 'Заполните поле даты'"):
+        base.get_by_placeholder("Заполните поле даты")
+
+
 
 
 
